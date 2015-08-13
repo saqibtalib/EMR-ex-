@@ -34,33 +34,57 @@ Enter Consumptions
 
             {{ Form::open(array('action' => 'ConsumptionsController@store', 'style' => 'padding: 40px', 'id' => 'pcons')) }}
                 <table width="621" height="350" border="2">
+
 {{--<input type="text" hidden="true" value="{{ $patient_id }}" name="patient_id"/>--}}
 
-               <tr>
-                   <td width="272" height="55"><label>Meal Charges:   </label> </td>
+               {{--<tr>--}}
+                   {{--<td width="272" height="55"><label>Meal Charges:   </label> </td>--}}
+                   {{--<input type="text" hidden="true" value="{{ $patient_id }}" name="patient_id"/>--}}
+
+{{--<input type="text" hidden="true" value="{{ $patient_id }}" name="patient_id"/>--}}
+
+               {{--<tr>--}}
+                   <td width="272" height="55"><label>Meal Charges *  </label> </td>
+
                    <div  value="{{{ Form::getValueAttribute('meal', null) }}}" class="menu" style="margin-left: 30%; ">
-                   <td width="333">{{ Form::textarea('meal', null, array('rows' => '2', 'cols' => '10', 'placeholder' => 'Enter Meal Charges', "style" => "font-size: 1.2em; margin-top: 2px; resize: none; width: 98%") ) }}</td>
+                   <td width="333">{{ Form::input('number','meal', null, array('rows' => '2', 'cols' => '10', 'placeholder' => 'Enter Meal Charges','pattern'=> "[0-9]",'min'=>'1','step'=>'1', "style" => "font-size: 1.2em; margin-top: 2px; resize: none; width: 98%") ) }}</td>
 
                       </td>
                       </div>
                 </tr>
                <tr>
-                                  <td width="272" height="55"><label>Medicine Charges:   </label> </td>
+                                  <td width="272" height="55"><label>Medicine Charges *   </label> </td>
                                   <div  value="{{{ Form::getValueAttribute('medicine', null) }}}" class="menu" style="margin-left: 30%; ">
-                                  <td width="333">{{ Form::textarea('medicine', null, array('rows' => '2', 'cols' => '10', 'placeholder' => 'Enter Medicine Charges', "style" => "font-size: 1.2em; margin-top: 2px; resize: none; width: 98%") ) }}</td>
+                                  <td width="333">{{ Form::input('number','medicine', null, array('rows' => '2', 'cols' => '10', 'placeholder' => 'Enter Medicine Charges','pattern'=> "[0-9]",'min'=>'1','step'=>'1', "style" => "font-size: 1.2em; margin-top: 2px; resize: none; width: 98%") ) }}</td>
 
                                        </td>
                                        </div>
                                </tr>
 
                                <tr>
-                                                  <td width="272" height="200"><label>Other Charges:   </label> </td>
-                                                  <div  value="{{{ Form::getValueAttribute('others', null) }}}" class="menu" style="margin-left: 30%; ">
-                                                  <td width="333">{{ Form::textarea('others', null, array('rows' => '5', 'cols' => '10', 'placeholder' => 'Other Charges', "style" => "font-size: 1.2em; margin-top: 2px; resize: none; width: 98%") ) }}</td>
+                                                  <td width="272" height="200"><label>Bed Charges *  </label> </td>
+                                                  <div  value="{{{ Form::getValueAttribute('bed', null) }}}" class="menu" style="margin-left: 30%; ">
+                                                  <td width="333">{{ Form::input('number','bed', null, array('rows' => '5', 'cols' => '10', 'placeholder' => 'Bed Charges', 'pattern'=> "[0-9]",'min'=>'1','step'=>'1',"style" => "font-size: 1.2em; margin-top: 2px; resize: none; width: 98%") ) }}</td>
 
                                                     </td>
                                                     </div>
                                                </tr>
+                    <tr>
+                        <td width="272" height="55"><label>Room Charges *  </label> </td>
+                        <div  value="{{{ Form::getValueAttribute('medicine', null) }}}" class="menu" style="margin-left: 30%; ">
+                            <td width="333">{{ Form::input('number','room', null, array('rows' => '2', 'cols' => '10', 'placeholder' => 'Room Charges','pattern'=> "[0-9]",'min'=>'1','step'=>'1', "style" => "font-size: 1.2em; margin-top: 2px; resize: none; width: 98%") ) }}</td>
+
+                            </td>
+                        </div>
+                    </tr>
+                    <tr>
+                        <td width="272" height="55"><label>Operation Charges *  </label> </td>
+                        <div  value="{{{ Form::getValueAttribute('medicine', null) }}}" class="menu" style="margin-left: 30%; ">
+                            <td width="333">{{ Form::input('number','operation', null, array('rows' => '2', 'cols' => '10', 'placeholder' => 'Operation Charges','pattern'=> "[0-9]",'min'=>'1','step'=>'1', "style" => "font-size: 1.2em; margin-top: 2px; resize: none; width: 98%") ) }}</td>
+
+                            </td>
+                        </div>
+                    </tr>
                 <tr>
                 <td colspan="2">
                     <center>

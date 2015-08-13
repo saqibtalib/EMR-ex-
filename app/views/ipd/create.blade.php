@@ -1,4 +1,4 @@
-@extends('ipd.layouts.master')
+    @extends('ipd.layouts.master')
 <!--========================================================
                           TITLE
 =========================================================-->
@@ -54,7 +54,7 @@ Patient Registration
                  <tr>
                                 <td width="272" height="55"><label>Bed no</label> </td>
                                  <td width="333">
-
+{{--                                     {{ Form::select($bed, [], null, ['required' => 'true', 'id' => 'bed', 'style' => "width: 100%; height: 38px"] ); }}--}}
                                    {{ Form::select('bed', $bed,array('id'=>'bed'))}}
                                  </td>
                  </tr>

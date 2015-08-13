@@ -55,11 +55,14 @@
                             <td>{{{ $patient->beds->bed_no}}}</td>
                             <td>{{{ $patient->rooms->room_no }}}</td>
 
+
                             <td>
                             {{ link_to_route('ipd.show', 'View', [$patient->id], ['class' => 'data_table_btn', 'style' => 'margin-bottom: 2px'])}}
 
                             {{ link_to_route('ipd.edit', 'Edit', [$patient->id], ['class' => 'data_table_btn'])}}
-
+                                {{--{{ link_to_route('ipd.edit', 'Edit', [$patient->id], ['class' => 'data_table_btn'])}}    --}}
+                            {{--{{link_to_route('destroypatient','Remove',[$patient->id],['class'=>'data_table_btn'])}}--}}
+                                <a class="data_table_btn" href="destroypatient?id={{$patient->id}}">Delete</a>
                             </td>
                         </tr>
                     @endforeach

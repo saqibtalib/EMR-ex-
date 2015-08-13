@@ -51,11 +51,15 @@ class AdminIPDController extends \BaseController
             //  $ward = new Wards();
             $ward = Wards::find(Input::get('ward'));
             $bed->ward_id = $ward->id;
-            $bed->save();
+//            $bed->save();
+
              $bed->ward_type = \Illuminate\Support\Facades\Input::get('type');
 //            $bed->Ward_id = Input::get('ward');
 //            $bed->save();
             $bed->bed_no = Input::get('bedno');
+//            $bed->save();
+            $bed->status  = 'active';
+//            $bed->status= \Illuminate\Support\Facades\Input::get('status');
             $bed->save();
         }
         return Redirect::route('adminipd.index');

@@ -57,6 +57,25 @@ class HomeController extends BaseController {
         $Consumptions = Consumptions::all();
         return View::make('consumptions.create', compact('Consumptions'));
     }
+    public function listcons()
+    {
+        $Consumptions = Consumptions::all();
+        return View::make('consumptions.listcons', compact('Consumptions'));
+    }
+    public function consac()
+    {
+        $patients = Patient::all();
+        return View::make('consumptions.indexac', compact('patients'));
+    }
+    public function nursee()
+    {
+        $UpdateHs = UpdateHs::all();
+//        $id= Input::get('id');
+//        $patient = Patient::find($id);
+//        $UpdateHs = $patient->UpdateHs()->get();
+       return View::make('nurse.layouts.nursePmr', compact('UpdateHs'));
+
+    }
 ////////////////////////////nurse end///////////////////////////////////
 	public function showDoctor_home()
 	{
@@ -117,30 +136,37 @@ class HomeController extends BaseController {
 //
 //        return View::make('receptionist.rep');
   //  }
-public function showAdmin_opd()
-{
 
-    return View::make('admin.admin_opd');
-}public function showAdmin_ipd()
-{
 
-    return View::make('admin.admin_ipd');
-}
-    public function showReceptionist_IPD()
+    //**************************************
+    function showAdmin_opd()
+    {
+
+        return View::make('admin.admin_opd');
+    }
+    function showAdmin_ipd()
+    {
+
+        return View::make('admin.admin_ipd');
+    }
+    function showReceptionist_IPD()
     {
 
         return View::make('receptionist.receptionist_ipd');
     }
-    public function showReceptionist_IPD_index()
+    function showReceptionist_IPD_index()
     {
 
         return View::make('ipd.ipd_index');
     }
-    public function showReceptionist_IPD_create()
+    function showReceptionist_IPD_create()
     {
 
         return View::make('ipd.ipd_create');
     }
+
+
+    //*****************************************
 //////////////////////////SSSSSSSSSSSS/////////////////////
 
     public function showViewPMR(){

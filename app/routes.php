@@ -221,6 +221,10 @@ Route::group(array('before' => 'auth'), function(){
     Route::resource('view_patient', 'HomeController@vwpatient');
     Route::get('del_cons', 'ConsumptionsController@destroy');
     Route::get('list_cons', 'ConsumptionsController@listCons');
+    Route::resource('listcons', 'HomeController@listcons');
+    Route::resource('nursee', 'HomeController@nursee');
+    Route::resource('consac', 'HomeController@consac');
+    Route::get('list_consac', 'ConsumptionsController@listConsac');
 ///////////////////////////nurse end///////////////////////////////////////////////
 
     /*------------------------------------------------------------*/
@@ -240,39 +244,14 @@ Route::group(array('before' => 'auth'), function(){
     Route::get('destroyroom', 'RoomsController@destroy');
     Route::resource('rooms', 'RoomsController@index');
     Route::resource('rooms', 'RoomsController');
+    Route::resource('opt', 'OptController');
+    Route::resource('destroyopt', 'OptController@destroy');
+    Route::resource('opt_index', 'OptController@index');
+//    Route::resource('ipd','IPDcontroller');
+    \Illuminate\Support\Facades\Route::get('destroypatient','IPDController@destroy');
 
 
   //////************************************extension
-    function showReceptionist_OPD()
-    {
-
-        return View::make('receptionist.rep');
-    }
-     function showAdmin_opd()
-    {
-
-        return View::make('admin.admin_opd');
-    }
-    function showAdmin_ipd()
-    {
-
-        return View::make('admin.admin_ipd');
-    }
-     function showReceptionist_IPD()
-    {
-
-        return View::make('receptionist.receptionist_ipd');
-    }
-    function showReceptionist_IPD_index()
-    {
-
-        return View::make('ipd.ipd_index');
-    }
-     function showReceptionist_IPD_create()
-    {
-
-        return View::make('ipd.ipd_create');
-    }
     Route::resource('addrooms', 'RoomsController@create');
   Route::resource('adminipd', 'AdminIPDController');
 

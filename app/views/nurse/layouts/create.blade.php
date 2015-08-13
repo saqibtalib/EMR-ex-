@@ -55,6 +55,7 @@ class="current"
                                                   </section>
                                              </center>
 			<div>
+                <input type="text" hidden="true" value="{{ $patient_id }}" name="patient_id"/>
 				<div  value="{{{ Form::getValueAttribute('sheet', null) }}}" class="menu" style="margin-left: 30%; ">
 			<tr><td>	{{ Form::textarea('sheet', null, array('rows' => '10','required'=>'true', 'cols' => '50', 'placeholder' => 'Health Sheet', "style" => "font-size: 1.2em; margin-top: 2px; resize: none;") ) }}
 </td></tr>

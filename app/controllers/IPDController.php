@@ -25,8 +25,22 @@ class IPDController extends \BaseController {
 
         $ward = Wards::lists('ward_name','id');
        $room = Rooms::lists('room_no','id');
+        $beds = Wards::find(Input::get('ward'));
+
+//       $patient->ward_id = $wards->id;
 //        $rom = Rooms::lists('room_no','id');
-        $bed = Beds::lists('bed_no','id');
+//        $bed = Beds::lists('bed_no','id');
+
+        $bed = DB::table('beds')->where('status','active')->lists('bed_no','id');
+//        $bed = \Illuminate\Support\Facades\DB::select("select beds where status = 'active' and ward_id ='$beds->ward' ")->;
+//        $bed = Beds::lists($roles);
+//       $patient = Patient::all();
+//       $bedid = $patient->bed->first();
+//        if($bedid == $bed['id'] ){
+//            echo'kjsahfdkajskfjk';
+//            exit();
+
+//        }
         return View :: make('ipd.create', compact('ward',"bed",'room'));
 
 
@@ -54,60 +68,69 @@ class IPDController extends \BaseController {
             $ward = Wards::find(Input::get('ward'));
 
             $patient->ward_id = $ward->id;
-            $patient->save();
+//            $patient->save();
 
             $patient->name = Input::get('name');
-            $patient->save();
+//            $patient->save();
             $patient->dob = Input::get('dob');
-            $patient->save();
+//            $patient->save();
             if (Input::has('email')){
                 $patient->email = Input::get('email');
-                $patient->save();
+//                $patient->save();
             } else {
                 $patient->email = 'N/A';
-                $patient->save();
+//                $patient->save();
             }
             $patient->gender = Input::get('gender');
-            $patient->save();
+//            $patient->save();
             $patient->age = Input::get('age');
-            $patient->save();
+//            $patient->save();
             $patient->city = Input::get('city');
-            $patient->save();
+//            $patient->save();
             $patient->country = Input::get('country');
-            $patient->save();
+//            $patient->save();
             $patient->address = Input::get('address');
-            $patient->save();
+//            $patient->save();
 //            $patient->ward = Input::get('ward');
 //            $patient->save();
             $patient->bed = Input::get('bed');
-            $patient->save();
+//            $patient->save();
+//            $beds = Beds::find('status');
+//            $beds ='active';
+//            $beds->save();
+
+//            exit();
+//            $patient->$bedid ='active';
+//            $bedid->save();
+
 
             $patient->room = Input::get('room');
-            $patient->save();
+//            $patient->save();
 
             if (Input::get('phone') == '') {
                 $patient->phone = 'N/A';
             } else {
                 $patient->phone = Input::get('phone');
             }
-            $patient->save();
+//            $patient->save();
 
             if (Input::get('cnic') == '') {
                 $patient->cnic = 'N/A';
             } else {
                 $patient->cnic = Input::get('cnic');
             }
-            $patient->save();
+//            $patient->save();
 
             if (Input::get('note') == '') {
                 $patient->note = 'N/A';
             } else {
                 $patient->note = Input::get('note');
             }
-            $patient->save();
+//            $patient->save();
 
             $patient->patient_id = "P0" . $patient->id;
             $patient->save();
+            \Illuminate\Support\Facades\DB::update("update beds set status='inactive' where id='$patient->bed'");
             echo"this is";
 //            if(Input::has('email')){
 //                $data = ['name' => Input::get('name')];
@@ -120,7 +143,7 @@ class IPDController extends \BaseController {
 
 //
 //
-            return Redirect::route('ipd.index');
+            return Redirect::to('ipd_patient');
         }
     }
 
@@ -148,7 +171,8 @@ class IPDController extends \BaseController {
 
             $patient = Patient::find($id);
             $ward = Wards::lists('ward_name','id');
-            $bed = Beds::lists('bed_no','id');
+            //$bed = Beds::lists('bed_no','id');
+            $bed = DB::table('beds')->where('status','active')->lists('bed_no','id');
             return View :: make('ipd.edit', compact('patient','ward',"bed"));
 
       // return View::make('ipd.edit', compact('patient'));
@@ -224,9 +248,16 @@ class IPDController extends \BaseController {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function destroy($id)
+	public function destroy()
 	{
-		//
+        $id = $_GET['id'];
+//        $patient->bed = Input::get('bed');
+        $patient = Patient::find($id);
+
+        \Illuminate\Support\Facades\DB::update("update beds set status ='active' where id='$patient->bed'");
+        $patient->delete();
+
+        return Redirect::route('ipd.index');
 	}
 
 

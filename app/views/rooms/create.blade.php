@@ -43,19 +43,19 @@ Patient Registration
   <tr>
                               <td width="272" height="55"><label>Room type</label> </td>
                               <td width="333">
-                              {{ Form::input('text', 'roomtype', null, array('required' => 'true','id' => 'roomtype')) }}
+                              {{ Form::input('text', 'roomtype', null, array('required' => 'true','id' => 'roomtype','pattern'=>'[a-zA-Z| |]*','title'=>'Only Alphabet Allowed')) }}
                               </td>
                       </tr>
                      <tr>
                              <td width="272" height="55"><label>Room Location</label> </td>
                              <td width="333">
-                             {{ Form::input('text', 'roomlocation', null, array('required' => 'true','id' => 'roomlocation')) }}
+                             {{ Form::input('text', 'roomlocation', null, array('required' => 'true','id' => 'roomlocation','pattern'=>'[a-zA-Z| |]*','title'=>'Only Alphabet Allowed')) }}
                              </td>
                      </tr>
                      <tr>
                              <td width="272" height="55"><label>Room No</label> </td>
                              <td width="333">
-                             {{ Form::input('text', 'roomno', null, array('required' => 'true','id' => 'roomno')) }}
+                             {{ Form::input('number', 'roomno', null, array('required' => 'true','id' => 'roomno','pattern'=> "[0-9]",'min'=>'1','step'=>'1')) }}
                              </td>
                      </tr>
 

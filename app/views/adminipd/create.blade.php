@@ -60,10 +60,16 @@ Patient Registration
                  <tr>
                                  <td width="272" height="55"><label>Bed no</label> </td>
                                  <td width="333">
-                                     {{ Form::input('text', 'bedno', null, array('required' => 'true','id' => 'bedno')) }}
+                                     {{ Form::input('number', 'bedno', null, array('required' => 'true','id' => 'bedno','pattern'=> "[0-9]",'min'=>'1','step'=>'1')) }}
                                  </td>
                                  </tr>
 
+                    {{--<tr>--}}
+
+                        {{--<td width="333">--}}
+                            {{--{{ Form::input('hidden', 'status', null, array('required' => 'true','id' => 'status','value'=>'active')) }}--}}
+                        {{--</td>--}}
+                    {{--</tr>--}}
 
               <!--**********************************Extension*********************************-->
 

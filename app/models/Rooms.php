@@ -21,5 +21,9 @@ class Rooms extends \Eloquent
     protected $fillable = ['room_type', 'room_location','room_no'];
 
 
+    public function patient()
+    {
+        return $this->hasOne('Patient','bed','id');
+    }
 
 }

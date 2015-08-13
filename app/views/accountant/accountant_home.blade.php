@@ -36,6 +36,7 @@ class="current"
 
 					<a class="ferozi" href="balancesheet">Balance Sheet</a>
 					<a class="purple" href="dispatch">Medicine Dispatch List</a>
+                    <a class="orange" href="consac">Consumptions</a>
 				{{--<a class="pink" href="rooms">rooms</a>--}}
 				</div>
 			</div>

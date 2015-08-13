@@ -42,13 +42,13 @@ Patient Registration
                 <tr>
                                 <td width="272" height="55"><label>Ward name</label> </td>
                                 <td width="333">
-                                    {{ Form::input('text', 'wardname', null, array('required' => 'true','id' => 'wardname')) }}
+                                    {{ Form::input('text', 'wardname', null, array('required' => 'true','id' => 'wardname','pattern'=>'[a-zA-Z| |]*','title'=>'Only Alphabet Allowed')) }}
                                 </td>
                  </tr>
                  <tr>
                                  <td width="272" height="55"><label>Ward type</label> </td>
                                  <td width="333">
-                                     {{ Form::input('text', 'wardtype', null, array('required' => 'true','id' => 'wardtype')) }}
+                                     {{ Form::input('text', 'wardtype', null, array('required' => 'true','id' => 'wardtype','pattern'=>'[a-zA-Z| |]*','title'=>'Only Alphabet Allowed')) }}
                                  </td>
                                  </tr>
 

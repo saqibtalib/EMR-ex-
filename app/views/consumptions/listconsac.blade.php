@@ -28,11 +28,7 @@ Patient's Health sheets
         <table id="example" style=" border: 1px solid black" class="display" cellspacing="0" width="70%">
             <thead>
             <tr>
-
              {{--<th style="width: 20%">Patient ID</th>--}}
-
-             {{--<th style="width: 20%">Patient ID</th>--}}
-
                 <th style="width: 20%">ID</th>
 
 
@@ -50,11 +46,7 @@ Patient's Health sheets
 
             @foreach($Consumptions as $Consumptions)
             <tr>
-
             {{--<td>{{{ $Consumptions->patient_id }}}</td>--}}
-
-            {{--<td>{{{ $Consumptions->patient_id }}}</td>--}}
-
                 <td>{{{$Consumptions->id }}}</td>
 
 
@@ -63,8 +55,7 @@ Patient's Health sheets
 
 
  <td width="40%"> <a class="data_table_btn" href="view_cons?id={{$Consumptions->id}}">View</a>
- <a class="data_table_btn" href="edit_cons?id={{$Consumptions->id}}">Edit</a>
- <a class="data_table_btn" href="del_cons?id={{$Consumptions->id}}">Delete</a></td>
+</td>
 
             </tr>
             @endforeach

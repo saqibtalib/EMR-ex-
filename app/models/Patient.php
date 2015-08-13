@@ -88,6 +88,18 @@ class Patient extends \Eloquent {
     {
         return $this->hasMany('Checkupfee');
     }
+    public function bill()
+    {
+        return $this->hasOne('Bill');
+    }
+    public function UpdateHs()
+    {
+        return $this->hasMany('UpdateHs');
+    }
+    public function consumptions()
+    {
+        return $this->hasMany('Consumptions','patient_id','id');
+    }
 //    public function bed()
 //    {
 //        return $this->Belongsto('Beds');

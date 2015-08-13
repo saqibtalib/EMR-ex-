@@ -10,13 +10,14 @@ class NurseController extends \BaseController {
 	public function index()
 	{
        // $id= $_GET['id'];
-//        $id= Input::get('id');
-//       $patient = Patient::find($id);
-//
-//  $UpdateHs = $patient->UpdateHs()->get();
+        $id= Input::get('id');
+       $patient = Patient::find($id);
+//echo $patient;
+   $UpdateHs = $patient->UpdateHs()->get();
 
-$UpdateHs = UpdateHs::all();
-  return View::make('nurse.layouts.nursePmr', compact('UpdateHs'));
+
+//$UpdateHs = UpdateHs::all();
+ return View::make('nurse.layouts.nursePmr', compact('UpdateHs'));
 
 //        return View::make('nurse.layouts.nursePmr');
 	}
@@ -126,9 +127,10 @@ $UpdateHs = UpdateHs::all();
 
         $data = \Illuminate\Support\Facades\Input::all();
         $UpdateHs->update($data);
+     //return View::make('nurse.layouts.nursePmr', compact('UpdateHs'));
+      // return Redirect::back();
 
-
-    return Redirect::route('nurse.index');
+    return Redirect::to('view_patient');
 
 	}
 
@@ -136,12 +138,14 @@ $UpdateHs = UpdateHs::all();
 	public function destroy()
 
 	{
-        $id= $_GET['id'];
+
+      echo  $id= $_GET['id'];
         $UpdateHs = UpdateHs::find($id);
         $UpdateHs->delete();
-//redirect
-        Session::flash('message','successfully deleted');
-        return Redirect::route('nurse.index');
+
+//echo $UpdateHs;
+// return View::make('nurse.layouts.index', compact('UpdateHs'));
+        return Redirect::back();
 	}
 
 

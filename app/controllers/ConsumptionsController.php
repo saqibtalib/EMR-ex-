@@ -8,17 +8,24 @@ class ConsumptionsController extends \BaseController
      *
      * @return Response
      */
-
+    public function listConsac()
+    {
+        $Consumptions = Consumptions::all();
+        return View::make('consumptions.listconsac', compact('Consumptions'));
+    }
 
     public function listCons()
     {
+
+//        return Redirect::back();
 //        $id= Input::get('id');
-//        $patient = Patient::find($id);
-//        $Consumptions = $patient->UpdateHs()->get();
+//        $patients = Patient::find($id);
+//   $Consumptions = $patients->Consumptions()->get();
+     //   $id= $_GET['id'];
 
-
-       $Consumptions = Consumptions::all();
-        return View::make('consumptions.listcons', compact('Consumptions'));
+//        return Redirect::back();
+    $Consumptions = Consumptions::all();
+      return \Illuminate\Support\Facades\View::make('consumptions.listcons', compact('Consumptions'));
 
 
 
@@ -27,11 +34,11 @@ class ConsumptionsController extends \BaseController
 	{
 
         $patients = Patient::all();
-        return View::make('consumptions.index',compact('patients'));
+//        return View::make('consumptions.index',compact('patients'));
 //        $id = Input::get('id');
 //        $patient = Patient::find($id);
-//        $Consumptions = $patient->Consumptions()->get();
-//        return View::make('consumptions.index', compact('Consumptions'));
+        $Consumptions = $patients->Consumptions()->get();
+        return View::make('consumptions.index', compact('Consumptions'));
 	}
 
 
@@ -40,11 +47,12 @@ class ConsumptionsController extends \BaseController
 	 *
 	 * @return Response
 	 */
-	public function create()
-	{
-
-      $patient_id = Input::get('id');
-        return View::make('consumptions.create',compact('patient_id'));
+	public function create(){
+//	{
+   $id= $_GET['id'];
+    // $patient_id = Input::get('id');
+//        echo $id;
+        return View::make('consumptions.create',compact('id'));
 	}
 
 
@@ -55,17 +63,24 @@ class ConsumptionsController extends \BaseController
 	 */
 	public function store()
 	{
+      //  return  Input::get('patient_id');
         $Consumptions = new Consumptions();
-        $Consumptions->patient_id = Input::get('patient_id',false);
+        $Consumptions->patient_id = Input::get('id',false);
         $Consumptions->meal = Input::get('meal');
         $Consumptions->save();
         $Consumptions->medicine = Input::get('medicine');
         $Consumptions->save();
-        $Consumptions->others = Input::get('others');
+        $Consumptions->bed = Input::get('bed');
+        $Consumptions->save();
+        $Consumptions->room = Input::get('room');
+        $Consumptions->save();
+        $Consumptions->operation = Input::get('operation');
         $Consumptions->save();
 
         $patients = Patient::all();
         return View::make('consumptions.index',compact('patients'));
+//        $Consumptions = Consumptions::all();
+//        return View::make('consumptions.listcons', compact('Consumptions'));
 
     }
 
@@ -81,7 +96,7 @@ class ConsumptionsController extends \BaseController
         $id= $_GET['id'];
 
 
-        $Consumptions = Consumptions::findOrFail($id);
+        $Consumptions = Consumptions::find($id);
 
         return View::make('consumptions.show', compact('Consumptions','id'));
 	}
@@ -117,9 +132,10 @@ class ConsumptionsController extends \BaseController
 
         $data = \Illuminate\Support\Facades\Input::all();
         $Consumptions->update($data);
+        return Redirect::to('listcons');
 
-        $Consumptions = Consumptions::all();
-        return View::make('consumptions.listcons', compact('Consumptions'));
+//       $patients = Patient::all();
+//     return View::make('consumptions.index',compact('patients'));
 
 	}
 
@@ -135,10 +151,12 @@ class ConsumptionsController extends \BaseController
         $id= $_GET['id'];
         $Consumptions = Consumptions::find($id);
         $Consumptions->delete();
+        return Redirect::back();
 ////redirect
 //     Session::flash('message','successfully deleted');
-        $Consumptions = Consumptions::all();
-        return View::make('consumptions.listcons', compact('Consumptions'));
+//        $Consumptions = Consumptions::all();
+//
+//        return View::make('consumptions.listcons', compact('Consumptions'));
 	}
 
 

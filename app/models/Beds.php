@@ -14,7 +14,7 @@ class Beds extends \Eloquent {
     ];
 
 // Don't forget to fill this array
-    protected $fillable = ['ward_id', 'bed_no','ward_type'];
+    protected $fillable = ['ward_id', 'bed_no','ward_type','status'];
 
 
 

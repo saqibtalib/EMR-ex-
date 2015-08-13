@@ -25,7 +25,7 @@ class="current"
             </div>
             	<div class="menu" style="margin-left: 10%; margin-right: 10%">
 
-            					<a class="green" href="app_vitals">Operation Theater Status</a>
+            					<a class="green" href="opt_index">OPT schedule</a>
             					<a class="pink" href="dutydays">Allocation of bed</a>
             					<a class="purple" href="search_pmr">Allocation of room</a>
             					<a class="blue" href="ipd_patient">Manage patients</a>
