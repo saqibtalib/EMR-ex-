@@ -247,7 +247,10 @@ Route::group(array('before' => 'auth'), function(){
     Route::resource('opt', 'OptController');
     Route::resource('destroyopt', 'OptController@destroy');
     Route::resource('opt_index', 'OptController@index');
+    Route::resource('sendlist', 'DispatchlistsController@sendlist');
+    Route::resource('destroylist', 'DispatchlistsController@destroy');
 //    Route::resource('ipd','IPDcontroller');
+
     \Illuminate\Support\Facades\Route::get('destroypatient','IPDController@destroy');
 
 
@@ -273,7 +276,7 @@ Route::group(array('before' => 'auth'), function(){
 
     Route::resource('appointments', 'AppointmentsController');
 
-    Route::resource('dispatch', 'HomeController@showDispatch');
+    Route::resource('dispatch', 'DispatchlistsController@dispatch');
 
     Route::get('app_vitals', function(){
         if(Auth::user()->role == 'Administrator' || Auth::user()->role == 'Receptionist'){

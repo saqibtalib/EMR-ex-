@@ -48,10 +48,11 @@ class RoomsController extends \BaseController {
 
 
             $room->room_location = Input::get('roomlocation');
-            $room->save();
+//            $room->save();
             $room->room_no = Input::get('roomno');
-            $room->save();
+//            $room->save();
             $room->room_type = Input::get('roomtype');
+            $room->status = 'active';
             $room->save();
         }
         return Redirect::route('rooms.index');

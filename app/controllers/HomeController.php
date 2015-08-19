@@ -125,11 +125,11 @@ class HomeController extends BaseController {
         $patients = Patient::all();
 		return View::make('medical_records.search-pmr', compact('patients'));
 	}
-    public function showDispatch(){
-        $dispatchlist = Dispatchlist::all();
-
-        return View::make('accountant.dispatch',compact('dispatchlist'));
-    }
+//    public function showDispatch(){
+////        $dispatchlist = Dispatchlist::all();
+//    $dispatchlist = ;
+//        return View::make('accountant.dispatch',compact('dispatchlist'));
+//    }
     /////////////////////SSSSSSSSSSS////////////////////////////////
 //    public function showReceptionist_OPD()
 //    {

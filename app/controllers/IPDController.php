@@ -24,14 +24,15 @@ class IPDController extends \BaseController {
 	{
 
         $ward = Wards::lists('ward_name','id');
-       $room = Rooms::lists('room_no','id');
-        $beds = Wards::find(Input::get('ward'));
+//       $room = Rooms::lists('room_no','id');
+//        $beds = Wards::find(Input::get('ward'));
 
 //       $patient->ward_id = $wards->id;
 //        $rom = Rooms::lists('room_no','id');
 //        $bed = Beds::lists('bed_no','id');
 
         $bed = DB::table('beds')->where('status','active')->lists('bed_no','id');
+        $room = DB::table('rooms')->where('status','active')->lists('room_no','id');
 //        $bed = \Illuminate\Support\Facades\DB::select("select beds where status = 'active' and ward_id ='$beds->ward' ")->;
 //        $bed = Beds::lists($roles);
 //       $patient = Patient::all();
@@ -67,6 +68,7 @@ class IPDController extends \BaseController {
 
             $ward = Wards::find(Input::get('ward'));
 
+//            $patient->ward_id = $ward->id;
             $patient->ward_id = $ward->id;
 //            $patient->save();
 
@@ -131,6 +133,7 @@ class IPDController extends \BaseController {
             $patient->patient_id = "P0" . $patient->id;
             $patient->save();
             \Illuminate\Support\Facades\DB::update("update beds set status='inactive' where id='$patient->bed'");
+            \Illuminate\Support\Facades\DB::update("update rooms set status='inactive' where id='$patient->room'");
             echo"this is";
 //            if(Input::has('email')){
 //                $data = ['name' => Input::get('name')];
@@ -255,6 +258,7 @@ class IPDController extends \BaseController {
         $patient = Patient::find($id);
 
         \Illuminate\Support\Facades\DB::update("update beds set status ='active' where id='$patient->bed'");
+        \Illuminate\Support\Facades\DB::update("update rooms set status ='active' where id='$patient->room'");
         $patient->delete();
 
         return Redirect::route('ipd.index');

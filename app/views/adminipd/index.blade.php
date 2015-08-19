@@ -56,10 +56,13 @@
 
 
                             <td>
+
                                 {{ link_to_route('adminipd.show', 'View', [$bed->id], ['class' => 'data_table_btn', 'style' => 'margin-bottom: 2px'])}}
                                 {{ link_to_route('adminipd.edit', 'Edit', [$bed->id], ['class' => 'data_table_btn'])}}
                                 <a class="data_table_btn" href="destroybed?id={{$bed->id}}">Delete</a>
+
                             </td>
+
 
 
 

@@ -26,7 +26,7 @@
         <center style="margin-top: 7%;">
             <center>{{ link_to_route('dispatchlist.create', 'Create Dispatchlist', '', ['class' => 'btn_1'])}}</center>
             <br>
-            <table id="example" style=" border: 1px solid black" class="display" cellspacing="0" width="80%">
+            <table id="example" style=" border: 1px solid black" class="display" cellspacing="0" width="90%">
                 <thead>
                 <tr>
                      <th>Dispatchlist ID</th>
@@ -47,9 +47,18 @@
                         <td>{{{ $dispatchlist->req_amount }}}</td>
                         <td>{{{ $dispatchlist->total_amount }}}</td>
                         <td>
+
+                            @if($dispatchlist->status =='inactive')
                             {{ link_to_route('dispatchlist.show', 'View', [$dispatchlist->id], ['class' => 'data_table_btn', 'style' => 'margin-bottom: 2px'])}}
 
                             {{ link_to_route('dispatchlist.edit', 'Edit', [$dispatchlist->id], ['class' => 'data_table_btn'])}}
+                            <a class="data_table_btn" href="sendlist?id={{$dispatchlist->id}}">send</a>
+                            @endif
+
+                            @if($dispatchlist->status == 'active')
+                                {{ link_to_route('dispatchlist.show', 'View', [$dispatchlist->id], ['class' => 'data_table_btn', 'style' => 'margin-bottom: 2px'])}}
+                                <a class="data_table_btn" href="destroylist?id={{$dispatchlist->id}}">Delete</a>
+                            @endif
 
                         </td>
                     </tr>

@@ -1,7 +1,7 @@
 <?php
 
 class Dispatchlist extends \Eloquent {
-
+ protected $table = 'dispatchlists';
     /* public static $rules = [
          // 'title' => 'required'
          'name' => 'required',

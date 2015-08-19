@@ -1,4 +1,6 @@
     @extends('ipd.layouts.master')
+
+    {{--{{ HTML::script('js/fieldvalidation.js') }}--}}
 <!--========================================================
                           TITLE
 =========================================================-->
@@ -48,14 +50,15 @@ Patient Registration
                                 <td width="272" height="55"><label>Ward name</label> </td>
                                 <td width="333">
 
-                                   {{ Form::select('ward', $ward,array('id'=>'ward','name'=>'ward','placeholder'=>'select ward'))}}
+                                   {{ Form::select('ward',$ward ,array('id'=>'ward'))}}
                                  </td>
                  </tr>
+
                  <tr>
                                 <td width="272" height="55"><label>Bed no</label> </td>
                                  <td width="333">
 {{--                                     {{ Form::select($bed, [], null, ['required' => 'true', 'id' => 'bed', 'style' => "width: 100%; height: 38px"] ); }}--}}
-                                   {{ Form::select('bed', $bed,array('id'=>'bed'))}}
+                                   {{ Form::select('bed', $bed,array( 'id'=>'bed',''=>'select value'))}}
                                  </td>
                  </tr>
 
@@ -63,8 +66,9 @@ Patient Registration
                         <td width="272" height="55"><label>Room no</label> </td>
                         <td width="333">
 
-                            {{ Form::select('room', $room,array('id'=>'room'))}}
+                            {{ Form::select('room',  $room,array('id'=>'room'))}}
                         </td>
+                        {{--,array_merge([''=>'select room']--}}
                     </tr>  {{--<tr>--}}
                                   {{--<td width="272" height="55"><label>Room no</label> </td>--}}
                                   {{--<td width="333">--}}
@@ -383,5 +387,15 @@ Patient Registration
 		
 		<br><br>
 
-      
+    {{--<script type="text/javascript">--}}
+
+        {{--document.getElementById("bed").disabled = true;--}}
+        {{--document.getElementById("room").disabled = true;--}}
+        {{--var dis1 = document.getElementById("bed");--}}
+        {{--dis1.onchange = function () {--}}
+            {{--if (this.value != "" || this.value.length > 0) {--}}
+                {{--document.getElementById("room").disabled = true;--}}
+            {{--}--}}
+        {{--}--}}
+    {{--</script>--}}
 @stop
