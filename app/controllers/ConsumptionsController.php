@@ -22,9 +22,10 @@ class ConsumptionsController extends \BaseController
 //        $patients = Patient::find($id);
 //   $Consumptions = $patients->Consumptions()->get();
      //   $id= $_GET['id'];
-
+        $id= Input::get('id');
+        $patients = Patient::find($id);
 //        return Redirect::back();
-    $Consumptions = Consumptions::all();
+    $Consumptions = $patients->Consumptions()->get();
       return \Illuminate\Support\Facades\View::make('consumptions.listcons', compact('Consumptions'));
 
 
@@ -34,6 +35,7 @@ class ConsumptionsController extends \BaseController
 	{
 
         $patients = Patient::all();
+
 //        return View::make('consumptions.index',compact('patients'));
 //        $id = Input::get('id');
 //        $patient = Patient::find($id);
@@ -50,7 +52,9 @@ class ConsumptionsController extends \BaseController
 	public function create(){
 //	{
    $id= $_GET['id'];
-    // $patient_id = Input::get('id');
+//        $id = \Illuminate\Support\Facades\Input::get('id');
+
+        // $patient_id = Input::get('id');
 //        echo $id;
         return View::make('consumptions.create',compact('id'));
 	}
@@ -64,16 +68,20 @@ class ConsumptionsController extends \BaseController
 	public function store()
 	{
       //  return  Input::get('patient_id');
+
         $Consumptions = new Consumptions();
-        $Consumptions->patient_id = Input::get('id',false);
+//        $id = $_GET['id'];
+    //    $id = Patient::find('id');
+  //      $Consumptions->patient_id = $id->id;
+        $Consumptions->patient_id = Input::get('patient_id');
         $Consumptions->meal = Input::get('meal');
-        $Consumptions->save();
+//        $Consumptions->save();
         $Consumptions->medicine = Input::get('medicine');
-        $Consumptions->save();
+//        $Consumptions->save();
         $Consumptions->bed = Input::get('bed');
-        $Consumptions->save();
+//        $Consumptions->save();
         $Consumptions->room = Input::get('room');
-        $Consumptions->save();
+//        $Consumptions->save();
         $Consumptions->operation = Input::get('operation');
         $Consumptions->save();
 

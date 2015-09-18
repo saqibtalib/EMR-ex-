@@ -90,7 +90,7 @@ class Patient extends \Eloquent {
     }
     public function bill()
     {
-        return $this->hasOne('Bill');
+        return $this->hasOne('Bill','patient_id','id');
     }
     public function UpdateHs()
     {

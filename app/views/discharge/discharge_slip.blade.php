@@ -15,7 +15,7 @@
 
         <div class = "user_logo">
             <div class="header_1 wrap_3 color_3" style="color: #fff; padding-top: 20px">
-               Bill Details
+                Bill Details
             </div>
         </div>
         <br><br><br>
@@ -23,13 +23,13 @@
 
         @section('content2')
             {{--<script>--}}
-                {{--function print(){--}}
+            {{--function print(){--}}
 
-                    {{--window.print();--}}
+            {{--window.print();--}}
 
 
 
-                {{--}--}}
+            {{--}--}}
 
             {{--</script>--}}
 
@@ -40,30 +40,34 @@
                             <td width="272" height="55"><label> Patient Name</label></td>
                             <td width="333"><label>{{{ $bill->patient->name }}}</label></td>
                         </tr>
+                        <tr>
+                            <td width="272" height="55"><label> Admitted Time</label></td>
+                            <td width="333"><label>{{{ $bill->patient->created_at }}}</label></td>
+                        </tr>
 
                         <tr>
                             <td width="272" height="55"><label>       Room charges</label></td>
                             <td width="333"><label>{{{ $bill->room_charges }}}</label></td>
                         </tr>
                         <tr>
-                            <td width="272" height="55"><label>      Bed charges*</label></td>
+                            <td width="272" height="55"><label>      Bed charges</label></td>
                             <td width="333"><label>{{{  $bill->bed_charges}}}</label></td>
                         </tr>
                         <tr>
-                            <td width="272" height="55"><label>     Operation charges*</label></td>
+                            <td width="272" height="55"><label>     Operation charges</label></td>
                             <td width="333"><label>{{{   $bill->operation_charges }}}</label></td>
                         </tr>
                         <tr>
-                            <td width="272" height="55"><label>      Meal charges*</label></td>
+                            <td width="272" height="55"><label>      Meal charges</label></td>
                             <td width="333"><label>{{{   $bill->meal_charges }}}</label></td>
                         </tr>
                         <tr>
-                            <td width="272" height="55"><label>      Medicine charges*</label></td>
+                            <td width="272" height="55"><label>      Medicine charges</label></td>
                             <td width="333"><label>{{{   $bill->medicine_charges}}}</label></td>
                         </tr>
                         <tr>
-                             <td width="272" height="55"><label>       Total charges*</label></td>
-                             <td width="333"><label>{{{   $bill->total_charges}}}</label></td>
+                            <td width="272" height="55"><label> Total Amount</label></td>
+                            <td width="333"><label>{{{   $bill->total_charges}}}</label></td>
                         </tr>
                         <tr>
                             <td width="272"><label>Additional Info:</label></td>

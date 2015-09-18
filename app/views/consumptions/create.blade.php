@@ -44,11 +44,12 @@ Enter Consumptions
 {{--<input type="text" hidden="true" value="{{ $patient_id }}" name="patient_id"/>--}}
 
                {{--<tr>--}}
+
                    <td width="272" height="55"><label>Meal Charges *  </label> </td>
 
                    <div  value="{{{ Form::getValueAttribute('meal', null) }}}" class="menu" style="margin-left: 30%; ">
                    <td width="333">{{ Form::input('number','meal', null, array('rows' => '2', 'cols' => '10', 'placeholder' => 'Enter Meal Charges','pattern'=> "[0-9]",'min'=>'1','step'=>'1', "style" => "font-size: 1.2em; margin-top: 2px; resize: none; width: 98%") ) }}</td>
-
+                       <input type="text" hidden="true" value="{{ $id }}" name="patient_id"/>
                       </td>
                       </div>
                 </tr>

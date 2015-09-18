@@ -13,6 +13,7 @@ class Bill extends \Eloquent {
 
     public function patient()
     {
-        return $this->belongsTo('Patient');
+        return $this->belongsTo('Patient','patient_id','id');
     }
+
 }

@@ -1,5 +1,5 @@
 <?php
-
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 class IPDController extends \BaseController {
 
 	/**
@@ -7,6 +7,31 @@ class IPDController extends \BaseController {
 	 *
 	 * @return Response
 	 */
+    public function destroypatient()
+    {
+        $id = $_GET['id'];
+////        $patient->bed = Input::get('bed');
+//        $patient = Patient::find($id);
+//        \Illuminate\Support\Facades\DB::update("update beds set status ='active' where id='$patient->bed'");
+//        \Illuminate\Support\Facades\DB::update("update rooms set status ='active' where id='$patient->room'");
+////        \Illuminate\Support\Facades\DB::table('bills')->where($patient,'id')
+
+//        $patient->delete();
+        $bill = bill::findOrFail($id);
+//        $bill = Bill::all();
+        return View :: make('discharge.discharge_slip',compact('bill'));
+
+
+    }
+    public function patientbill()
+    {
+        $id = $_GET['id'];
+//        $patient = \Illuminate\Support\Facades\DB::table('patients')->where('id',$id)->get(['name']);
+        $bill = \Illuminate\Support\Facades\DB::table('bills')->where('patient_id',$id)->get();
+        return \Illuminate\Support\Facades\View::make('discharge.discharge_home',compact('bill'));
+
+    }
+
 	public function index()
 	{
         $patients = Patient::all();
@@ -20,6 +45,21 @@ class IPDController extends \BaseController {
 	 *
 	 * @return Response
 	 */
+
+
+    public function bedouts()
+    {
+
+        $data = filter_input(INPUT_POST, 'val');
+        $bed = DB::table('beds')->where('status','active')->where('ward_id',$data)->lists('bed_no','id');
+        echo json_encode($bed);
+        return;
+
+    }
+
+
+
+
 	public function create()
 	{
 
@@ -68,6 +108,7 @@ class IPDController extends \BaseController {
 
             $ward = Wards::find(Input::get('ward'));
 
+
 //            $patient->ward_id = $ward->id;
             $patient->ward_id = $ward->id;
 //            $patient->save();
@@ -104,7 +145,7 @@ class IPDController extends \BaseController {
 //            exit();
 //            $patient->$bedid ='active';
 //            $bedid->save();
-
+            $patient->status  = 'IPD';
 
             $patient->room = Input::get('room');
 //            $patient->save();
@@ -142,7 +183,7 @@ class IPDController extends \BaseController {
 //                    $message->to(Input::get('email'), Input::get('name'))->subject('Welcome to EMR!');
 //                });
 //            }
-            echo "agya";
+            // "agya";
 
 //
 //
@@ -256,12 +297,17 @@ class IPDController extends \BaseController {
         $id = $_GET['id'];
 //        $patient->bed = Input::get('bed');
         $patient = Patient::find($id);
+//        echo $id;
 
         \Illuminate\Support\Facades\DB::update("update beds set status ='active' where id='$patient->bed'");
         \Illuminate\Support\Facades\DB::update("update rooms set status ='active' where id='$patient->room'");
+        \Illuminate\Support\Facades\DB::table('bills')->where('patient_id',$id)->delete();
+        \Illuminate\Support\Facades\DB::table('consumptions')->where('patient_id',$id)->delete();
+//        \Illuminate\Support\Facades\DB::table('bills')->where($patient,'id')
+//        $bill->delete();
         $patient->delete();
-
         return Redirect::route('ipd.index');
+
 	}
 
 

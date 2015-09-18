@@ -9,7 +9,8 @@ class PatientsController extends \BaseController {
 	 */
 	public function index()
 	{
-		$patients = Patient::all();
+//		$patients = Patient::all();
+		$patients = \Illuminate\Support\Facades\DB::table('patients')->where('status','OPD')->get();
 
 		return View::make('patients.index', compact('patients'));
 	}
@@ -40,48 +41,48 @@ class PatientsController extends \BaseController {
 
         $patient = new Patient();
         $patient->name = Input::get('name');
-        $patient->save();
+      //  $patient->save();
         $patient->dob = Input::get('dob');
-        $patient->save();
+        //$patient->save();
         if(Input::has('email')){
             $patient->email = Input::get('email');
-            $patient->save();
+          //  $patient->save();
         }else{
             $patient->email = 'N/A';
-            $patient->save();
+            //$patient->save();
         }
         $patient->gender = Input::get('gender');
-        $patient->save();
+        //$patient->save();
         $patient->age = Input::get('age');
-        $patient->save();
+        //$patient->save();
         $patient->city = Input::get('city');
-        $patient->save();
+        //$patient->save();
         $patient->country = Input::get('country');
-        $patient->save();
+       // $patient->save();
         $patient->address = Input::get('address');
-        $patient->save();
+        //$patient->save();
 
         if(Input::get('phone') == ''){
             $patient->phone = 'N/A';
         }else {
             $patient->phone = Input::get('phone');
         }
-        $patient->save();
+       // $patient->save();
 
         if(Input::get('cnic') == ''){
             $patient->cnic = 'N/A';
         }else {
             $patient->cnic = Input::get('cnic');
         }
-        $patient->save();
+        //$patient->save();
 
         if(Input::get('note') == ''){
             $patient->note = 'N/A';
         }else {
             $patient->note = Input::get('note');
         }
-        $patient->save();
-
+        //$patient->save();
+$patient->status="OPD";
         $patient->patient_id = "P0" . $patient->id;
         $patient->save();
 

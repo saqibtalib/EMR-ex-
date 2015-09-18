@@ -249,9 +249,13 @@ Route::group(array('before' => 'auth'), function(){
     Route::resource('opt_index', 'OptController@index');
     Route::resource('sendlist', 'DispatchlistsController@sendlist');
     Route::resource('destroylist', 'DispatchlistsController@destroy');
+    Route::post('bedouts', array('uses' => 'IPDController@bedouts'));
+    Route::post('billinfo', array('uses' => 'BillsController@billinfo'));
 //    Route::resource('ipd','IPDcontroller');
 
-    \Illuminate\Support\Facades\Route::get('destroypatient','IPDController@destroy');
+    \Illuminate\Support\Facades\Route::get('patientbill','IPDController@patientbill');
+    \Illuminate\Support\Facades\Route::get('destroypatient','IPDController@destroypatient');
+    \Illuminate\Support\Facades\Route::get('deletepatient','IPDController@destroy');
 
 
   //////************************************extension

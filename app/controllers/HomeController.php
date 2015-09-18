@@ -50,12 +50,14 @@ class HomeController extends BaseController {
         return View::make('nurse.layouts.index', compact('patients'));
     }
     public function cons(){
+
         $patients = Patient::all();
         return View::make('consumptions.index', compact('patients'));
     }
     public function consume(){
+        $id = \Illuminate\Support\Facades\Input::get('id');
         $Consumptions = Consumptions::all();
-        return View::make('consumptions.create', compact('Consumptions'));
+        return View::make('consumptions.create', compact('Consumptions','id'));
     }
     public function listcons()
     {

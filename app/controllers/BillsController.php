@@ -7,6 +7,26 @@ class BillsController extends \BaseController {
 	 *
 	 * @return Response
 	 */
+
+    public function billinfo()
+    {
+
+        $data = filter_input(INPUT_POST, 'val');
+        $date = \Illuminate\Support\Facades\DB::table('patients')->where('id',$data)->lists('created_at');
+        $bedcharges = \Illuminate\Support\Facades\DB::table('consumptions')->where('patient_id',$data)->lists('bed') ;
+        $roomcharges = \Illuminate\Support\Facades\DB::table('consumptions')->where('patient_id',$data)->lists('room') ;
+        $operationcharges = \Illuminate\Support\Facades\DB::table('consumptions')->where('patient_id',$data)->lists('operation') ;
+        $medicinecharges = \Illuminate\Support\Facades\DB::table('consumptions')->where('patient_id',$data)->lists('medicine') ;
+        $mealcharges = \Illuminate\Support\Facades\DB::table('consumptions')->where('patient_id',$data)->lists('meal') ;
+         echo json_encode(array($date,$bedcharges,$roomcharges,$operationcharges,$medicinecharges,$mealcharges));
+//
+//         echo json_encode($roomcharges);
+//         echo json_encode($operationcharges);
+//         echo json_encode($medicinecharges);
+//         echo json_encode($mealcharges);
+        return;
+    }
+
 	public function index()
 	{
         $bill = bill::all();
@@ -22,7 +42,11 @@ class BillsController extends \BaseController {
 	 */
 	public function create()
 	{  $patient = Patient::get(['name','id'])->lists('name','id');
-        return View::make('bills.create',compact('patient'));
+
+
+
+
+        return View::make('bills.create',compact('patient','admit'));
 	}
 
 
@@ -34,7 +58,7 @@ class BillsController extends \BaseController {
 	public function store()
 	{
         $bill = new bill();
-
+//        $bill->patient_id =\Illuminate\Support\Facades\Input::get('patient');
         $patient = Patient::find(Input::get('patient'));
         $bill->patient_id=$patient->id;
         $bill->save();

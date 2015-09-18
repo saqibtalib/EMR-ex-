@@ -8,7 +8,7 @@ class Consumptions extends \Eloquent {
     public function patient()
     {
        // return $this->belongsTo('patient','patient_id','id');
-        return $this->belongsTo('patient');
+        return $this->belongsTo('Patient','patient_id','id');
     }
 
 

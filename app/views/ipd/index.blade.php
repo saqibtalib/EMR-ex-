@@ -62,7 +62,8 @@
                             {{ link_to_route('ipd.edit', 'Edit', [$patient->id], ['class' => 'data_table_btn'])}}
                                 {{--{{ link_to_route('ipd.edit', 'Edit', [$patient->id], ['class' => 'data_table_btn'])}}    --}}
                             {{--{{link_to_route('destroypatient','Remove',[$patient->id],['class'=>'data_table_btn'])}}--}}
-                                <a class="data_table_btn" href="destroypatient?id={{$patient->id}}">Delete</a>
+                                <a class="data_table_btn" href="patientbill?id={{$patient->id}}">Bill</a>
+                                <a class="data_table_btn" href="deletepatient?id={{$patient->id}}">DEL</a>
                             </td>
                         </tr>
                     @endforeach

@@ -20,10 +20,10 @@
     {{ HTML::style('/css/owl.carousel.css') }}
     {{ HTML::style('/css/jquery-ui.css') }}
 
-  
-<!--========================================================
-                          JS
-=========================================================-->
+
+    <!--========================================================
+                              JS
+    =========================================================-->
 
     {{ HTML::script('js/user_validation.js') }}
     {{ HTML::script('js/jquery.js') }}
@@ -35,7 +35,7 @@
     {{ HTML::script('js/jquery.mobile.customized.min.js') }}
     {{ HTML::script('js/camera.js') }}
     {{ HTML::script('js/owl.carousel.js') }}
-    
+
     {{ HTML::script('js/jquery.cookie.js') }}
     {{ HTML::script('js/device.min.js') }}
     {{ HTML::script('js/tmstickup.js') }}
@@ -50,35 +50,30 @@
     {{ HTML::script('js/jquery_masks.js') }}
     {{ HTML::script('js/jquery-ui.js') }}
 
-        <!-- Data Table files -->
+    <!-- Data Table files -->
 
-        {{ HTML::script('js/jquery.dataTables.js') }}
-        {{ HTML::style('/css/jquery.dataTables.css') }}
+    {{ HTML::script('js/jquery.dataTables.js') }}
+    {{ HTML::style('/css/jquery.dataTables.css') }}
 
-        <script type="text/javascript">
-            $(document).ready(function() {
-                $('#example').dataTable();
-                $("#cnic").mask("99999-9999999-9");
-                $("#phone").mask("(9999) 999-9999999");
-            } );
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#example').dataTable();
+            $("#cnic").mask("99999-9999999-9");
+            $("#phone").mask("(9999) 999-9999999");
+        } );
 
-            function back () {
-                window.history.back();
-            }
-//            function ward () {
-//                $('#regForm').on('click','#city',function() {
-//                    alert('i am clicked');
-//                });
-//                }
+        function back () {
+            window.history.back();
+        }
 
-            function getAge(){
-                var dob = new Date($('#dob').val());
-                var today = new Date();
-                var age = today.getFullYear() - dob.getFullYear();
-                $('#age').val(age);
-            }
-        </script>
-        <!--------- End of Data Table files ------->
+        function getAge(){
+            var dob = new Date($('#dob').val());
+            var today = new Date();
+            var age = today.getFullYear() - dob.getFullYear();
+            $('#age').val(age);
+        }
+    </script>
+    <!--------- End of Data Table files ------->
 
     <!--------------------- VIEW USER tr CSS -------------------->
 
@@ -107,33 +102,33 @@
     <link rel="stylesheet" type="text/css" media="screen" href="/css/ie.css">
     <![endif]-->
     <!-- About Page End -->
-    
+
 </head>
 <body>
-    
+
 <div class="page">
 
     <!--========================================================
                                   HEADER
     =========================================================-->
-        @include('partials.header')
+    @include('partials.header')
 
-<!--========================================================
-                          CONTENT-1
-=========================================================-->
+    <!--========================================================
+                              CONTENT-1
+    =========================================================-->
     @yield('content1')
 
 
-<!--========================================================
-                          CONTENT-2
-=========================================================-->
+    <!--========================================================
+                              CONTENT-2
+    =========================================================-->
     @yield('content2')
 
-<!--========================================================
-                          FOOTER
-=========================================================-->
-@include('partials.footer')
+    <!--========================================================
+                              FOOTER
+    =========================================================-->
+    @include('partials.footer')
 
- 
+
 </body>
 </html>
